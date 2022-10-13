@@ -1,0 +1,73 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+Build company-Project
+{% endblock %}
+
+{% block style %}
+ <link href="{% static 'main/css/info-project.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="wrapper">
+        <section class="home">
+            <div class="container">
+                <div class="home-content">
+                    <div class="home-text">
+                        <p>{{project.name_header}}</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="info-content">
+            <div class="container">
+                <div class="main-info">
+                    <div class="info-block">
+                        <div class="info-heading">
+                            <i class="building"><img src="{% static 'main/images/building-icon.svg' %}", alt="building-icon"/></i>
+                            <div class="heading-text">{{project.name_project}}</div>
+                        </div>
+                        <div class="info">
+                            <i class="line"><img src= "{% static 'main/images/line_info.png' %}", alt="line"/></i>
+                            <div class="info-text">{{project.info_about}}
+                            </div>
+                        </div>
+                        <a href="/cooperation">
+                            <button class="btn">Замовити проект</button>
+                        </a>
+                        <div class="order">
+                            <i class="order-icon"><img src= "{% static 'main/images/order.svg' %}" , alt="order"/></i>
+                            <div class="order-text">Замовник: {{project.order}} </div>
+                        </div>
+                    </div>
+                    <div class="info-img">
+                        <img class= 'build-img' src="/static/main/{{project.img_project}}" , alt="build"/>
+                        <div class="img-describe">
+                            <i class="adress"><img src= "{% static 'main/images/nav.svg' %}"></i>
+                            <div class="img-text">{{project.adress}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-before-header">
+                    <div class="rectangle"></div>
+                    <div class="project-before-title">Попередні роботи</div>
+                </div>
+            </div>
+        </section>
+        <section class="project-before">
+            <div class="container">
+                <div class="project-before-content">
+                    <div class="img-block">
+                        <img src= "{% static 'main/images/before-1.png' %}" , alt="before-build"/>
+                        <img src= "{% static 'main/images/before-2.png' %}" , alt="before-building"/>
+                        <img src= "{% static 'main/images/before-3.png' %}" , alt="before-building"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
+

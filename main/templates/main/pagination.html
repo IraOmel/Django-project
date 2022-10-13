@@ -1,0 +1,21 @@
+{% if projects.has_other_pages %}
+<ul class="pagination">
+    {% if projects.has_previous %}
+    <li><a href="?page={{ users.previous_page_number }}">></a></li>
+    {% else %}
+    <li class="disabled"><span>></span></li>
+    {% endif %}
+    {% for i in projects.paginator.page_range %}
+    {% if users.number == i %}
+    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+    {% else %}
+    <li><a href="?page={{ i }}">{{ i }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if projects.has_next %}
+    <li><a href="?page={{ projects.next_page_number }}"><</a></li>
+    {% else %}
+    <li class="disabled"><span><</span></li>
+    {% endif %}
+</ul>
+{% endif %}

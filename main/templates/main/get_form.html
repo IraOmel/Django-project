@@ -1,0 +1,12 @@
+{% extends 'main/cooperation_page.html' %}
+
+{% block form %}
+ {% include 'main/messages.html' %}
+    <form class="home-input" method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+    <div class="button">
+        <button class="button-6" type="submit" name="submitForm">Відправити</button>
+    </div>
+</form>
+{% endblock %}

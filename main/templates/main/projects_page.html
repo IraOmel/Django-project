@@ -1,0 +1,73 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+Build company-Projects
+{% endblock %}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'main/css/projects.css' %}"/>
+{% endblock %}
+
+{% block content %}
+<main>
+    <div class="wrapper">
+        <section class="home">
+            <div class="container">
+                <div class="home-content">
+                    <h1 class="home-heading">Проекти</h1>
+                    <div class="home-text">
+                        <p>Перелік найбільших виконаних замовлень</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="our-project">
+            <div class="container-fluid">
+                <div class="our-projects">
+                    <div class="row">
+                        {% for item in projects %}
+                        <div class="col-md-4">
+                            <div class="content">
+                                <a href="/project/{{item.eng_name}}">
+                                    <div class="content-overlay"></div>
+                                    <img class="content-image" src="/static/main/{{item.img_project}}"/>
+                                    <div class="content-details fadeIn-bottom">
+                                        <h3 class="content-title">{{item.name}}</h3>
+                                        <p class="content-text">
+                                            <i class="add-info"></i>{{item.short_info}}
+                                        </p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% if projects.has_other_pages %}
+                <ul class="pagination">
+                    {% if projects.has_previous %}
+                    <li><a href="?page={{ users.previous_page_number }}"><img src="{% static 'main/images/arrow-left.svg' %}" ,
+                                                    alt="arrow"/></a></li>
+                    {% else %}
+                    <li class="disabled"><span></span></li>
+                    {% endif %}
+                    {% for i in projects.paginator.page_range %}
+                    {% if users.number == i %}
+                    <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                    {% else %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% if projects.has_next %}
+                    <li><a href="?page={{ projects.next_page_number }}"><img
+                            src="{% static 'main/images/arrow-right.svg' %}" , alt="arrow"/></a></li>
+                    {% else %}
+                    <li class="disabled"><span></span></li>
+                    {% endif %}
+                </ul>
+                {% endif %}
+            </div>
+        </section>
+    </div>
+</main>
+{% endblock %}
